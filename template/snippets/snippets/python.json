@@ -1,0 +1,7 @@
+{
+  "main guard": {
+    "prefix": "ifmain",
+    "body": ["def main():", "\t${1:pass}$0", "", "", "if __name__ == \"__main__\":", "\tmain()"],
+    "description": "def main() and the __main__ check"
+  }
+}

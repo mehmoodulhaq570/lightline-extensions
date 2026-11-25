@@ -1,0 +1,7 @@
+id = "lightline-themes"
+name = "LightLine Themes"
+version = "1.0.0"
+schema_version = 1
+authors = ["LightLine"]
+description = "Daylight and Contrast, made to match LightLine Midnight"
+repository = "https://github.com/mehmoodulhaq570/lightline-extensions"

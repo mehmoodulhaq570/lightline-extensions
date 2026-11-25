@@ -1,0 +1,8 @@
+# Copy this folder to themes/lightline-<your-theme>/ and rename the id to match.
+id = "lightline-my-theme"
+name = "My Theme"
+version = "1.0.0"
+schema_version = 1
+authors = ["Your name"]
+description = "One line, at most 60 characters"
+repository = "https://github.com/mehmoodulhaq570/lightline-extensions"

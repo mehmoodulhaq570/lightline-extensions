@@ -1,0 +1,11 @@
+# Copy this folder to snippets/lightline-<your-pack>/ and rename the id to match.
+# Name each file after its language as Zed spells it, in lower case:
+# python.json, rust.json, c.json, c++.json, javascript.json, tsx.json...
+id = "lightline-my-snippets"
+name = "My Snippets"
+version = "1.0.0"
+schema_version = 1
+authors = ["Your name"]
+description = "One line, at most 60 characters"
+repository = "https://github.com/mehmoodulhaq570/lightline-extensions"
+snippets = ["snippets/python.json"]

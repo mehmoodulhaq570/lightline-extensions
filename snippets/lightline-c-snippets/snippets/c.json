@@ -1,0 +1,127 @@
+{
+  "main": {
+    "prefix": "main",
+    "body": ["int main(void) {", "\t$0", "\treturn 0;", "}"],
+    "description": "int main(void) { … }"
+  },
+  "main with arguments": {
+    "prefix": "maina",
+    "body": ["int main(int argc, char **argv) {", "\t$0", "\treturn 0;", "}"],
+    "description": "int main(argc, argv) { … }"
+  },
+  "include a system header": {
+    "prefix": "inc",
+    "body": ["#include <${1:stdio.h}>$0"],
+    "description": "#include <header.h>"
+  },
+  "include a local header": {
+    "prefix": "incl",
+    "body": ["#include \"${1:header.h}\"$0"],
+    "description": "#include \"header.h\""
+  },
+  "include guard": {
+    "prefix": "guard",
+    "body": ["#ifndef ${1:HEADER_H}", "#define HEADER_H", "", "$0", "", "#endif"],
+    "description": "#ifndef HEADER_H … #endif"
+  },
+  "function": {
+    "prefix": "func",
+    "body": ["${1:void} ${2:name}(${3:void}) {", "\t$0", "}"],
+    "description": "A function"
+  },
+  "if": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t$0", "}"],
+    "description": "if (…) { … }"
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if (${1:condition}) {", "\t$2", "} else {", "\t$0", "}"],
+    "description": "if (…) { … } else { … }"
+  },
+  "for": {
+    "prefix": "for",
+    "body": ["for (int i = ${1:0}; i < ${2:count}; i++) {", "\t$0", "}"],
+    "description": "for (int i = 0; i < count; i++)"
+  },
+  "for over an array": {
+    "prefix": "fori",
+    "body": [
+      "for (size_t i = 0; i < sizeof ${1:array} / sizeof ${2:array}[0]; i++) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "for each index of an array"
+  },
+  "while": {
+    "prefix": "while",
+    "body": ["while (${1:condition}) {", "\t$0", "}"],
+    "description": "while (…) { … }"
+  },
+  "do while": {
+    "prefix": "do",
+    "body": ["do {", "\t$0", "} while (${1:condition});"],
+    "description": "do { … } while (…);"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:value}) {",
+      "case ${2:0}:",
+      "\t$0",
+      "\tbreak;",
+      "default:",
+      "\tbreak;",
+      "}"
+    ],
+    "description": "switch (…) { case …: }"
+  },
+  "struct": {
+    "prefix": "struct",
+    "body": ["struct ${1:name} {", "\t${2:int field;}$0", "};"],
+    "description": "struct name { … };"
+  },
+  "typedef struct": {
+    "prefix": "tstruct",
+    "body": ["typedef struct {", "\t${2:int field;}$0", "} ${1:Name};"],
+    "description": "typedef struct { … } Name;"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": ["enum ${1:name} {", "\t${2:FIRST},$0", "};"],
+    "description": "enum name { … };"
+  },
+  "printf": {
+    "prefix": "printf",
+    "body": ["printf(\"${1:%d}\\n\"${2:, value});$0"],
+    "description": "printf(\"…\\n\", …);"
+  },
+  "scanf": {
+    "prefix": "scanf",
+    "body": ["if (scanf(\"${1:%d}\", &${2:value}) != 1) {", "\t${3:return 1;}", "}$0"],
+    "description": "scanf with a check that it read the value"
+  },
+  "malloc": {
+    "prefix": "malloc",
+    "body": [
+      "${1:int} *items = malloc(${2:count} * sizeof *items);",
+      "if (items == NULL) {",
+      "\t${3:return 1;}",
+      "}$0"
+    ],
+    "description": "malloc with a NULL check"
+  },
+  "fopen": {
+    "prefix": "fopen",
+    "body": [
+      "FILE *file = fopen(${1:\"name.txt\"}, \"${2:r}\");",
+      "if (file == NULL) {",
+      "\tperror(\"fopen\");",
+      "\t${3:return 1;}",
+      "}",
+      "$0",
+      "fclose(file);"
+    ],
+    "description": "fopen with an error check, then fclose"
+  }
+}
