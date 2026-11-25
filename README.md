@@ -4,10 +4,10 @@ LightLine's own extensions, made and tested for [LightLine](https://github.com/m
 
 Install them from LightLine: open **Extensions** (`Ctrl+Shift+X`). They're listed under **Recommended** with the **LightLine** badge. LightLine downloads only the extension's own folder, at the exact commit its list pins.
 
-| Extension | Kind | What it gives you |
-| --- | --- | --- |
-| [LightLine Themes](themes/lightline-themes) | Color theme | **LightLine Daylight** (light) and **LightLine Contrast** (high contrast), made to match LightLine's built-in Midnight |
-| [C and C++ Snippets](snippets/lightline-c-snippets) | Snippets | `main`, `for`, `struct`, `class`, include guards, `malloc` and `fopen` with their checks, and more |
+| | Extension | Kind | What it gives you |
+| --- | --- | --- | --- |
+| <img src="icons/lightline-themes.svg" width="36" height="36" alt=""> | [LightLine Themes](themes/lightline-themes) | Color theme | **LightLine Daylight** (light) and **LightLine Contrast** (high contrast), made to match LightLine's built-in Midnight |
+| <img src="icons/lightline-c-snippets.svg" width="36" height="36" alt=""> | [C and C++ Snippets](snippets/lightline-c-snippets) | Snippets | `main`, `for`, `struct`, `class`, include guards, `malloc` and `fopen` with their checks, and more |
 
 ![LightLine Daylight and LightLine Contrast](themes/lightline-themes/screenshots/both.png)
 
@@ -17,6 +17,7 @@ Install them from LightLine: open **Extensions** (`Ctrl+Shift+X`). They're liste
 themes/<id>/        color themes
 snippets/<id>/      snippet packs
 template/           a starting point for a new extension of each kind
+icons/              each extension's icon, as LightLine draws it in Extensions
 scripts/check.py    the checks CI runs on every push and pull request
 ```
 
