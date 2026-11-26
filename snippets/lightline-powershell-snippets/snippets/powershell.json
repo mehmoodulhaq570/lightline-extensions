@@ -1,0 +1,197 @@
+{
+  "script": {
+    "prefix": "script",
+    "body": [
+      "#Requires -Version ${1:5.1}",
+      "[CmdletBinding()]",
+      "param(",
+      "\t[Parameter(Mandatory)]",
+      "\t[string]\\$${2:Path}",
+      ")",
+      "",
+      "Set-StrictMode -Version Latest",
+      "\\$ErrorActionPreference = 'Stop'",
+      "",
+      "$0"
+    ],
+    "description": "A script with a param block, strict mode and stop on errors"
+  },
+  "function": {
+    "prefix": "func",
+    "body": ["function ${1:Verb-Noun} {", "\tparam(${2:[string]\\$Name})", "\t$0", "}"],
+    "description": "function Verb-Noun { param(…) … }"
+  },
+  "advanced function": {
+    "prefix": "afunc",
+    "body": [
+      "function ${1:Verb-Noun} {",
+      "\t[CmdletBinding()]",
+      "\tparam(",
+      "\t\t[Parameter(Mandatory, ValueFromPipeline)]",
+      "\t\t[${2:string}]\\$${3:InputObject}",
+      "\t)",
+      "",
+      "\tprocess {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "A function with [CmdletBinding()], a pipeline parameter and a process block"
+  },
+  "param block": {
+    "prefix": "param",
+    "body": ["param(", "\t[Parameter(Mandatory)]", "\t[${1:string}]\\$${2:Name}$0", ")"],
+    "description": "param( [Parameter(Mandatory)] … )"
+  },
+  "comment-based help": {
+    "prefix": "help",
+    "body": [
+      "<#",
+      ".SYNOPSIS",
+      "\t${1:What it does, in one line.}",
+      ".DESCRIPTION",
+      "\t${2:More detail.}",
+      ".EXAMPLE",
+      "\t${3:Verb-Noun -Name value}",
+      "#>$0"
+    ],
+    "description": "<# .SYNOPSIS .DESCRIPTION .EXAMPLE #>"
+  },
+  "if": {
+    "prefix": "if",
+    "body": ["if (${1:\\$condition}) {", "\t$0", "}"],
+    "description": "if (…) { … }"
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if (${1:\\$condition}) {", "\t$2", "} else {", "\t$0", "}"],
+    "description": "if (…) { … } else { … }"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:\\$value}) {",
+      "\t${2:'a'} { $3 }",
+      "\tdefault { $0 }",
+      "}"
+    ],
+    "description": "switch (…) { … default { … } }"
+  },
+  "foreach": {
+    "prefix": "foreach",
+    "body": ["foreach (\\$${1:item} in \\$${2:items}) {", "\t$0", "}"],
+    "description": "foreach ($item in $items) { … }"
+  },
+  "for": {
+    "prefix": "for",
+    "body": ["for (\\$i = 0; \\$i -lt ${1:\\$items.Count}; \\$i++) {", "\t$0", "}"],
+    "description": "for ($i = 0; $i -lt …; $i++) { … }"
+  },
+  "while": {
+    "prefix": "while",
+    "body": ["while (${1:\\$condition}) {", "\t$0", "}"],
+    "description": "while (…) { … }"
+  },
+  "do while": {
+    "prefix": "do",
+    "body": ["do {", "\t$0", "} while (${1:\\$condition})"],
+    "description": "do { … } while (…)"
+  },
+  "ForEach-Object": {
+    "prefix": "fe",
+    "body": ["| ForEach-Object { ${1:\\$_} }$0"],
+    "description": "| ForEach-Object { $_ }"
+  },
+  "Where-Object": {
+    "prefix": "where",
+    "body": ["| Where-Object { \\$_.${1:Name} -${2:eq} ${3:'value'} }$0"],
+    "description": "| Where-Object { $_.Name -eq … }"
+  },
+  "try catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch {",
+      "\tWrite-Error \"${2:Failed}: \\$(\\$_.Exception.Message)\"",
+      "} finally {",
+      "\t$0",
+      "}"
+    ],
+    "description": "try { … } catch { Write-Error … } finally { … }"
+  },
+  "hashtable": {
+    "prefix": "hash",
+    "body": ["\\$${1:table} = [ordered]@{", "\t${2:Key} = ${3:'value'}", "}$0"],
+    "description": "$table = [ordered]@{ Key = 'value' }"
+  },
+  "PSCustomObject": {
+    "prefix": "pscustom",
+    "body": ["[PSCustomObject]@{", "\t${1:Name} = ${2:'value'}", "}$0"],
+    "description": "[PSCustomObject]@{ Name = 'value' }"
+  },
+  "splatting": {
+    "prefix": "splat",
+    "body": [
+      "\\$params = @{",
+      "\t${1:Path} = ${2:'.'}",
+      "}",
+      "${3:Get-ChildItem} @params$0"
+    ],
+    "description": "$params = @{ … }; Cmd @params"
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:Name} {",
+      "\t[${2:string}] \\$${3:Value}",
+      "",
+      "\t[string] ToString() {",
+      "\t\treturn $0",
+      "\t}",
+      "}"
+    ],
+    "description": "class Name { [string] $Value; ToString() }"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": ["enum ${1:Name} {", "\t${2:First}", "\t${3:Second}$0", "}"],
+    "description": "enum Name { … }"
+  },
+  "here-string": {
+    "prefix": "here",
+    "body": ["@\"", "$0", "\"@"],
+    "description": "@\" … \"@ (a multi-line string)"
+  },
+  "region": {
+    "prefix": "region",
+    "body": ["#region ${1:Name}", "$0", "#endregion"],
+    "description": "#region … #endregion"
+  },
+  "ensure folder": {
+    "prefix": "mkdir",
+    "body": [
+      "\\$folder = ${1:'out'}",
+      "if (-not (Test-Path -Path \\$folder)) {",
+      "\tNew-Item -ItemType Directory -Path \\$folder | Out-Null",
+      "}$0"
+    ],
+    "description": "Create a folder if it doesn't exist"
+  },
+  "read lines": {
+    "prefix": "lines",
+    "body": ["foreach (\\$line in Get-Content -Path ${1:'file.txt'}) {", "\t$0", "}"],
+    "description": "foreach ($line in Get-Content …) { … }"
+  },
+  "Pester test": {
+    "prefix": "describe",
+    "body": [
+      "Describe '${1:Verb-Noun}' {",
+      "\tIt '${2:does something}' {",
+      "\t\t${3:\\$result} | Should -Be ${4:\\$expected}",
+      "\t}$0",
+      "}"
+    ],
+    "description": "Describe '…' { It '…' { … | Should -Be … } }"
+  }
+}

@@ -8,6 +8,7 @@ Install them from LightLine: open **Extensions** (`Ctrl+Shift+X`). They're liste
 | --- | --- | --- | --- |
 | <img src="icons/lightline-themes.svg" width="36" height="36" alt=""> | [LightLine Themes](themes/lightline-themes) | Color theme | **LightLine Daylight** (light) and **LightLine Contrast** (high contrast), made to match LightLine's built-in Midnight |
 | <img src="icons/lightline-c-snippets.svg" width="36" height="36" alt=""> | [C and C++ Snippets](snippets/lightline-c-snippets) | Snippets | `main`, `for`, `struct`, `class`, include guards, `malloc` and `fopen` with their checks, and more |
+| <img src="icons/lightline-powershell-snippets.svg" width="36" height="36" alt=""> | [PowerShell Snippets](snippets/lightline-powershell-snippets) | Snippets | `script`, `afunc` (`[CmdletBinding()]`), `param`, `try`, `splat`, `PSCustomObject`, Pester tests and more |
 
 ![LightLine Daylight and LightLine Contrast](themes/lightline-themes/screenshots/both.png)
 

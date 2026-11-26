@@ -1,0 +1,8 @@
+id = "lightline-powershell-snippets"
+name = "PowerShell Snippets"
+version = "1.0.0"
+schema_version = 1
+authors = ["LightLine"]
+description = "Functions, param blocks, try/catch, pipelines and more"
+repository = "https://github.com/mehmoodulhaq570/lightline-extensions"
+snippets = ["snippets/powershell.json"]
